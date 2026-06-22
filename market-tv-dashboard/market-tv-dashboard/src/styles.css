@@ -1,0 +1,418 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f4f7fb;
+  background: #070b14;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 1280px;
+  min-height: 720px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(52, 211, 153, 0.18), transparent 24rem),
+    radial-gradient(circle at 90% 10%, rgba(96, 165, 250, 0.18), transparent 28rem),
+    linear-gradient(135deg, #050814 0%, #0a1020 44%, #060912 100%);
+}
+
+.appShell {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: 2.35vh 2.3vw 7.9vh;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 1.55vh;
+  overflow: hidden;
+}
+
+.ambient {
+  position: fixed;
+  border-radius: 999px;
+  filter: blur(30px);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.ambientOne {
+  width: 27vw;
+  height: 27vw;
+  background: #0ea5e9;
+  top: 8vh;
+  right: -10vw;
+}
+
+.ambientTwo {
+  width: 25vw;
+  height: 25vw;
+  background: #10b981;
+  bottom: -12vw;
+  left: 12vw;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  color: #9fb3cf;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 800;
+  font-size: clamp(0.72rem, 0.8vw, 1rem);
+}
+
+h1, h2, h3, p { margin: 0; }
+
+h1 {
+  font-size: clamp(2.5rem, 3.8vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.subtitle {
+  margin-top: 0.75rem;
+  color: #c3d1e4;
+  font-size: clamp(1rem, 1.1vw, 1.35rem);
+}
+
+.clockPanel {
+  min-width: 19vw;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 1.25rem;
+  background: rgba(7, 12, 24, 0.72);
+  text-align: right;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+.clock {
+  font-size: clamp(2rem, 3.5vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+}
+
+.date, .updated, .source {
+  color: #aebdda;
+  font-size: clamp(0.84rem, 0.9vw, 1.15rem);
+  margin-top: 0.15rem;
+}
+
+.indexStrip {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.8vw;
+}
+
+.indexCard, .briefPanel, .stockCard, .errorPanel {
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  background: linear-gradient(155deg, rgba(18, 28, 50, 0.86), rgba(6, 10, 22, 0.88));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.26), inset 0 1px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+}
+
+.indexCard {
+  border-radius: 1.05rem;
+  padding: 0.9rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.4rem 1rem;
+  min-height: 8vh;
+}
+
+.indexName {
+  color: #aebdda;
+  font-size: clamp(0.85rem, 0.88vw, 1.1rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.indexCard strong {
+  font-size: clamp(1.25rem, 1.35vw, 1.8rem);
+  letter-spacing: -0.04em;
+}
+
+.pill, .badge {
+  justify-self: end;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: clamp(0.82rem, 0.82vw, 1rem);
+}
+
+.briefPanel {
+  position: relative;
+  z-index: 1;
+  border-radius: 1.35rem;
+  padding: 1.05rem 1.25rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.briefPanel h2 {
+  font-size: clamp(1.35rem, 1.6vw, 2.35rem);
+  letter-spacing: -0.04em;
+}
+
+.briefPanel p:not(.eyebrow) {
+  margin-top: 0.35rem;
+  color: #cbd5e1;
+  font-size: clamp(0.95rem, 0.98vw, 1.22rem);
+  line-height: 1.35;
+}
+
+.briefStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.briefStats div {
+  padding: 0.8rem;
+  border-radius: 1rem;
+  background: rgba(3, 7, 18, 0.58);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.briefStats span {
+  display: block;
+  color: #9fb3cf;
+  font-size: clamp(0.72rem, 0.75vw, 0.95rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+}
+
+.briefStats strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: clamp(1.2rem, 1.45vw, 2rem);
+  letter-spacing: -0.04em;
+}
+
+.stockGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 0.9vw;
+  min-height: 0;
+}
+
+.stockCard {
+  border-radius: 1.35rem;
+  padding: 1rem;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.stockTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.stockTop h3 {
+  font-size: clamp(1.45rem, 2vw, 2.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+}
+
+.stockTop p {
+  margin-top: 0.28rem;
+  color: #aebdda;
+  font-size: clamp(0.78rem, 0.85vw, 1.02rem);
+  max-width: 13vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+
+.priceRow strong {
+  font-size: clamp(1.55rem, 2.35vw, 3.1rem);
+  letter-spacing: -0.06em;
+}
+
+.priceRow span {
+  font-weight: 900;
+  font-size: clamp(0.95rem, 1.02vw, 1.3rem);
+}
+
+.sparkline {
+  width: 100%;
+  height: 7.2vh;
+  margin: 0.35rem 0 0.25rem;
+  overflow: visible;
+}
+
+.spark-grid {
+  fill: none;
+  stroke: rgba(148, 163, 184, 0.22);
+  stroke-width: 1;
+}
+
+.spark-path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 12px currentColor);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.45rem 0.7rem;
+  margin: 0;
+}
+
+.metrics div {
+  padding: 0.45rem 0.5rem;
+  border-radius: 0.8rem;
+  background: rgba(3, 7, 18, 0.45);
+  min-width: 0;
+}
+
+.metrics dt {
+  color: #889bb8;
+  font-size: clamp(0.65rem, 0.68vw, 0.82rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+}
+
+.metrics dd {
+  margin: 0.14rem 0 0;
+  font-size: clamp(0.8rem, 0.8vw, 1rem);
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.up { color: #34d399; }
+.down { color: #fb7185; }
+.flat { color: #cbd5e1; }
+
+.badge.up, .pill.up { background: rgba(52, 211, 153, 0.14); }
+.badge.down, .pill.down { background: rgba(251, 113, 133, 0.14); }
+.badge.flat, .pill.flat { background: rgba(203, 213, 225, 0.12); }
+
+.tickerWrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  height: 6.4vh;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(2, 6, 18, 0.94);
+  box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.tickerTrack {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: max-content;
+  animation: ticker 160s linear infinite;
+}
+
+.tickerItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 0.9rem;
+  border-right: 1px solid rgba(148, 163, 184, 0.18);
+  font-size: clamp(0.95rem, 1vw, 1.35rem);
+  white-space: nowrap;
+}
+
+.tickerItem strong {
+  font-size: 1.12em;
+  letter-spacing: -0.04em;
+}
+
+.tickerItem em {
+  font-style: normal;
+  font-weight: 900;
+}
+
+.errorPanel {
+  position: relative;
+  z-index: 2;
+  border-radius: 1.4rem;
+  padding: 2rem;
+}
+
+.errorPanel h2 { font-size: 2rem; }
+.errorPanel p { margin-top: 0.7rem; color: #cbd5e1; }
+.errorPanel button {
+  margin-top: 1rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.8rem 1.2rem;
+  font-weight: 900;
+  color: #04111d;
+  background: #7dd3fc;
+  cursor: pointer;
+}
+
+.inlineError {
+  position: fixed;
+  left: 2vw;
+  bottom: 7.1vh;
+  z-index: 9;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(251, 113, 133, 0.12);
+  color: #fecdd3;
+  border: 1px solid rgba(251, 113, 133, 0.32);
+  font-size: 0.9rem;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 1399px) {
+  .stockGrid { grid-template-columns: repeat(4, 1fr); }
+  .briefPanel { grid-template-columns: 1.2fr 1fr; }
+  .metrics { grid-template-columns: 1fr 1fr; }
+}

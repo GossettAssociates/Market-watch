@@ -1,0 +1,28 @@
+{
+  "name": "market-tv-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm:server\" \"npm:client\"",
+    "client": "vite --host 0.0.0.0",
+    "server": "node server/index.js",
+    "build": "vite build",
+    "start": "NODE_ENV=production node server/index.js"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "express": "^4.21.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "concurrently": "latest"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
